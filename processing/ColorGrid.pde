@@ -26,7 +26,13 @@ void draw() {
    If the cell in gridColors has the value 1, use the color1 for the corresponding square.
  */
 void grid() {
-
+  for(int i = 0; i < 6, i+=1){
+  stroke(255);
+    if(gridColor[i] == 0) {
+      fill(0);
+      rect(0 + 135i, 0 + 125i, 135 + 135i, 125 + 125i);
+    }
+  }
 }
 
 
