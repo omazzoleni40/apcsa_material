@@ -20,7 +20,7 @@ int mode_pos = 1; // mode 1 by default - if hits wall wraps around
 String actual_mode = mode_list.get(mode_pos); // current mode name
 
 PVector food; // food position
-
+int fillVal;
 PVector dir = new PVector(0, 0); // snake direction (up, down, left right)
 
 int size = 40; // snake and food square size
@@ -33,7 +33,6 @@ void setup() {
   size(1080, 720);
   w = width/size;
   h = height/size;
-  
   pos = new PVector(w/2, h/2); // Initial snake position
   newFood(); // create 2D vector
   
@@ -54,12 +53,16 @@ void draw() {
 
 // draw the food item (square) which size is tha variable size
 void drawFood() {
+  int randomX = (int)Math.floor(Math.random() * (26));
+  int randomY = (int)Math.floor(Math.random() * (17));
+  fill(255, 0, 0);
+  ellipse(27*randomX, 27*randomX + 40, 18*randomY, 18*randomY + 40);
   // YOUR CODE HERE
 }
 
 // declare a new pVector (random) for food
 void newFood() {
-  //food = new PVector......
+
 }
 
 // draw snake, consider the snake array size (each square of size size) + square of the current pos
@@ -69,7 +72,7 @@ void drawSnake() {
 
 void updateSnake() {
   // Add current position(head) to snake ArrayList
-  
+  snake.add(pos);
   // Check the size of snake. Remove some items from snake ArrayList if needed
   
   // Calculate new position of snake (head). You must use the direction vector for this calculation
@@ -99,7 +102,17 @@ void keyPressed() {
   // DOWN(0, 1)
   // LEFT(-1,0)
   // RIGHT(1,0)
-  
+  if(key == CODED) {
+    if (keyCode == UP) {
+      fillVal = 255;
+    }
+    else if (keyCode ==DOWN) {
+    fillVal = 0;
+    }
+    else {
+      fillVal = 120;
+    }
+   }  
 }
 
 // EXTRA FOR STUDENTS WHO FINISH WITH THE REQUIRED TASKS
@@ -109,3 +122,4 @@ void keyPressed() {
 // add colors: 
 //     1. make the food colorful and when the snake eats the food, it adopts that color
 //     2. make the backgroud looks like a grid adding colors
+
